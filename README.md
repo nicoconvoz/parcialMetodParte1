@@ -10,6 +10,8 @@
 
 * Astorga, Nicolás
 
+# Inicia con el Backend que se encuentra en la rama "backend"
+
 # Dependencias:
 
 * npm install bootstrap jquery popper.js
