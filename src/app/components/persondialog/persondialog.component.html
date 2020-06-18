@@ -1,0 +1,57 @@
+<button mat-button mat-dialog-close color="warn" style="float:right;">X</button>
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+
+<div mat-dialog-content>
+  
+  <form [formGroup]="form">
+
+    <input hidden formControlName="id">
+    <div class="form-row">
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Person nombre" formControlName="nombre">
+        <mat-error *ngIf="errorHandling('nombre', 'required')">
+          El nombre es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Person apellido" formControlName="apellido">
+        <mat-error *ngIf="errorHandling('apellido', 'required')">
+          El apellido es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+
+    <div class="form-row">
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>DNI</mat-label>
+        <input matInput placeholder="Person DNI" formControlName="dni">
+        <mat-error *ngIf="errorHandling('dni', 'required')">
+          El DNI es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Edad</mat-label>
+        <input matInput placeholder="Person edad" formControlName="edad">
+        <mat-error *ngIf="errorHandling('edad', 'required')">
+          La edad es obligatoria.
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div class="container-button">
+      <button mat-raised-button color="primary" (click)="onAction()">{{action}}</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+    </div>
+    
+  </form>
+
+</div>

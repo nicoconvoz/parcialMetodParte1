@@ -1,0 +1,69 @@
+<button mat-button mat-dialog-close color="warn" style="float:right;">X</button>
+<h1 mat-dialog-title><strong>Registro de Domicilios</strong></h1>
+<div mat-dialog-content>
+<div style="margin: 1%;">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Buscar...">
+    </mat-form-field>
+    <div class="container-btn-new">
+      <button mat-stroked-button color="primary" (click)="onSubmit({})">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="calle">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Calle </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.calle}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="numero">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numero </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.numero}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="departamento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Departamento </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.departamento}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="piso">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Piso </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.piso}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="localidad">
+      <th mat-header-cell *matHeaderCellDef> Localidad </th>
+      <td mat-cell *matCellDef="let element"> {{element.localidad}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-stroked-button matTooltip="Editar" (click)="onSubmit(element)">
+          <mat-icon color="accent">edit</mat-icon>
+        </button>
+        <button mat-stroked-button matTooltip="Eliminar" (click)="onDelete(element)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  
+  </mat-table>
+  
+  <div style="margin-top: 1%">
+    <button type="button" class="btn btn-primary" (click)="siguiente()" style="float: right;"> Siguiente </button>
+    <button type="button" class="btn btn-primary" style="text-align: right; float: right;" (click)="anterior()"> Anterior </button>
+    <span style="float: right; margin-right: 1%;">Número de página: {{this.page}}</span>
+  </div>
+  
+  </div>

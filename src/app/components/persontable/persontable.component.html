@@ -1,0 +1,69 @@
+<div style="margin: 1%;">
+  <h1 style="margin-top: 1%; text-align: left;">Registro de Personas</h1>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar...">
+  </mat-form-field>
+  <div class="container-btn-new">
+    <button mat-stroked-button color="primary" (click)="onSubmit({})">
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="apellido">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.apellido}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dni">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> DNI </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.dni}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edad">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Edad </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.edad}} </mat-cell>
+  </ng-container>
+
+  <!-- Agregar "VER DOMICILIOS" cuando se cliquea aquí se abre el modal que contiene 
+  el abm de domicilios...-->
+  <ng-container matColumnDef="ver_domicilios">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Domicilio </mat-header-cell>
+    <button style="margin-right: 4%;" type="button" class="btn btn-primary" *matCellDef="let element" (click)="abrirdomtable(element.id)"> Ver Domicilios </button>
+  </ng-container>
+
+  
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-stroked-button matTooltip="Editar" (click)="onSubmit(element)">
+        <mat-icon color="accent">edit</mat-icon>
+      </button>
+      <button mat-stroked-button matTooltip="Eliminar" (click)="onDelete(element)">
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<div style="margin-top: 1%">
+  <button type="button" class="btn btn-primary" (click)="siguiente()" style="float: right;"> Siguiente </button>
+  <button type="button" class="btn btn-primary" style="text-align: right; float: right;" (click)="anterior()"> Anterior </button>
+  <span style="float: right; margin-right: 1%;">Número de página: {{this.page}}</span>
+</div>

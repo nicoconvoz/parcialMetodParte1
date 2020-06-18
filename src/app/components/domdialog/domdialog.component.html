@@ -1,0 +1,51 @@
+<button mat-button mat-dialog-close color="warn" style="float:right;">X</button>
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+
+<div mat-dialog-content>
+
+  <form [formGroup]="formDom">
+
+    <input hidden formControlName="id">
+
+    <div class="form-row">
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Calle</mat-label>
+        <input matInput placeholder="Calle donde vive" formControlName="calle">
+      </mat-form-field>
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Numero</mat-label>
+        <input matInput placeholder="Numero de la casa" formControlName="numero">
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-row">
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Piso</mat-label>
+        <input matInput placeholder="Piso donde vive" formControlName="piso">
+      </mat-form-field>
+
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Departamento</mat-label>
+        <input matInput placeholder="Departamento de la casa" formControlName="departamento">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="form-group col-md-6">
+        <mat-label>Localidad</mat-label>
+        <input matInput placeholder="Localidad donde vive" formControlName="localidad">
+      </mat-form-field>
+    </div>
+
+    <div class="container-button">
+      <button mat-raised-button color="primary" (click)="onAction()">{{action}}</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+    </div>
+
+  </form>
+
+</div>
